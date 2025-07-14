@@ -10,6 +10,7 @@ encoder = joblib.load("ordinal_encoder.pkl")
 # UI Config
 st.set_page_config(page_title="HDB Price Estimator", layout="centered")
 st.title("🏘️ Singapore HDB Resale Price Estimator")
+st.markdown("This app estimates the resale price of an HDB flat using a machine learning model trained on historical and economic data.")
 st.write("Enter your property details to estimate the resale price.")
 
 # Static dropdown options (based on your provided lists)
@@ -92,7 +93,7 @@ with st.form("input_form"):
     closest_mrt = st.selectbox("Closest MRT Station", mrt_stations)
 
     floor_area_sqm = st.number_input("Floor Area (sqm)", min_value=30.0, max_value=200.0, value=80.0, step=1.0)
-    floor_input = st.number_input("Storey (Actual floor number)", min_value=1, max_value=51, value=5, step=1)
+    floor_input = st.number_input("Storey", min_value=1, max_value=51, value=5, step=1)
     cbd_dist = st.number_input("Distance to CBD (km)", min_value=0.0, max_value=25.0, value=8.0, step=1.0)
     lease_year = st.number_input("Lease Commencement Year", min_value=1960, max_value=2025, value=2000, step=1)
 
