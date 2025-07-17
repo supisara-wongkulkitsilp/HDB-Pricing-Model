@@ -110,8 +110,6 @@ if submitted:
         user_df = pd.DataFrame([{
             'floor_area_sqm': floor_area_sqm,
             'storey_median': storey_median,
-            'latitude': 1.3521,  # Placeholder or use geo-lookup
-            'longitude': 103.8198,  # Placeholder
             'closest_mrt': closest_mrt,
             'cbd_dist': cbd_dist,
             'lease_commence_date': lease_year,
