@@ -108,16 +108,16 @@ if submitted:
             'town': town,
             'flat_model': flat_model,
             'flat_type': flat_type,
-            'GDP': gdp,
-            'GDP per Capita': gdp_pc,
-            'GNI per Capita': gni_pc,
-            'Population': population,
-            'Resident Household': households,
-            'HDB Dwellings': hdb_units,
-            'Inflation Rate': inflation,
-            'Interest Rate': interest,
-            'Unemployment Rate': unemployment,
-            'Yield_5y_interest': yield5
+            'GDP': 510000.0,
+            'GDP per Capita': 85000.0,
+            'GNI per Capita': 79000.0,
+            'Population': 5600000,
+            'Resident Household': 1200000,
+            'HDB Dwellings': 1000000,
+            'Inflation Rate': 1.5,
+            'Interest Rate': 3.0,
+            'Unemployment Rate': 2.1,
+            'Yield_5y_interest': 2.5
         }])
 
         # Encode categoricals
