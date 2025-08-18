@@ -103,7 +103,6 @@ if submitted:
         # Encode categorical
         user_df[encoder.feature_names_in_] = encoder.transform(user_df[encoder.feature_names_in_])
 
-        )
 
         # Prediction
         prediction = model.predict(user_df)[0]
