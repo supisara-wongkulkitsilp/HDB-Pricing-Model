@@ -72,22 +72,24 @@ with st.form("input_form"):
 # ------------------------------
 # Prediction Logic
 # ------------------------------
+# --- Model Prediction ---
 if submitted:
     storey_median = map_floor_to_median(int(floor_input))
 
     if np.isnan(storey_median):
         st.error("Invalid floor number. Must be between 1 and 51.")
     else:
-        # Prepare input
+        # Prepare feature array
         user_df = pd.DataFrame([{
             'floor_area_sqm': floor_area_sqm,
             'storey_median': storey_median,
+            'closest_mrt': closest_mrt,
             'cbd_dist': cbd_dist,
             'lease_commence_date': lease_year,
             'town': town,
             'flat_model': flat_model,
             'flat_type': flat_type,
-            # Keep economic indicators fixed (latest known values)
+            # Economic indicators: placeholder values
             'GDP': 510000.0,
             'GDP per Capita': 85000.0,
             'GNI per Capita': 79000.0,
@@ -100,13 +102,21 @@ if submitted:
             'Yield_5y_interest': 2.5
         }])
 
-        # Encode categorical
-        user_df[encoder.feature_names_in_] = encoder.transform(user_df[encoder.feature_names_in_])
+        # Align encoder columns with user input
+        encoder_cols = list(encoder.feature_names_in_)
+        common_cols = [c for c in encoder_cols if c in user_df.columns]
 
+        # Debug info
+        st.write("Encoder expects:", encoder_cols)
+        st.write("Using common cols:", common_cols)
 
-        # Prediction
+        # Transform only matching categorical columns
+        user_df[common_cols] = encoder.transform(user_df[common_cols])
+
+        # Predict
         prediction = model.predict(user_df)[0]
-        st.success(f"🏠 Estimated Resale Price: SGD {prediction:,.2f}")
+        st.success(f"💰 Estimated Resale Price: SGD {prediction:,.2f}")
+
 
         # Market comparison
         avg_price = market_ref.query("town == @town and flat_type == @flat_type")["avg_price"].mean()
