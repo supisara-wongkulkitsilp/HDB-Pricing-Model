@@ -76,21 +76,6 @@ def map_floor_to_median(floor_input):
             return median
     return np.nan
 
-# --- Sidebar: Economic Indicators ---
-with st.sidebar:
-    st.header("📊 Economic Conditions")
-    st.caption("Default values are the most recent available. You can adjust if desired.")
-    gdp = st.number_input("GDP", value=510000.0)
-    gdp_pc = st.number_input("GDP per Capita", value=85000.0)
-    gni_pc = st.number_input("GNI per Capita", value=79000.0)
-    population = st.number_input("Population", value=5600000)
-    households = st.number_input("Resident Households", value=1200000)
-    hdb_units = st.number_input("HDB Dwellings", value=1000000)
-    inflation = st.number_input("Inflation Rate (%)", value=1.5)
-    interest = st.number_input("Interest Rate (%)", value=3.0)
-    unemployment = st.number_input("Unemployment Rate (%)", value=2.1)
-    yield5 = st.number_input("5Y Bond Yield (%)", value=2.5)
-
 # --- Main Form: Property Inputs ---
 with st.form("input_form"):
     col1, col2 = st.columns(2)
