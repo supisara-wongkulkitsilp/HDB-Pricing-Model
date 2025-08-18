@@ -17,9 +17,9 @@ market_ref = pd.read_csv("market_avg.csv")
 # ------------------------------
 # UI Setup
 # ------------------------------
-st.set_page_config(page_title="HDB Price Estimator", layout="centered")
+st.set_page_config(page_title="HDB Price Estimator", page_icon="🏠", layout="centered")
 st.title("🏘️ Singapore HDB Resale Price Estimator")
-st.markdown("Estimate resale prices of HDB flats with ML + compare with market averages.")
+st.markdown("Estimate resale prices of HDB flats with Machine Learning + compare with market averages.")
 
 # ------------------------------
 # Sidebar: Buyer or Seller
@@ -101,8 +101,8 @@ if submitted:
         }])
 
         # Encode categorical
-        user_df[['town', 'flat_model', 'flat_type']] = encoder.transform(
-            user_df[['town', 'flat_model', 'flat_type']]
+        user_df[encoder.feature_names_in_] = encoder.transform(user_df[encoder.feature_names_in_])
+
         )
 
         # Prediction
