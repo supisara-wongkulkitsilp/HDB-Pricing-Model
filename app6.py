@@ -56,6 +56,7 @@ with st.form("input_form"):
     town = st.selectbox("Town", towns)
     flat_type = st.selectbox("Flat Type", flat_types)
     flat_model = st.selectbox("Flat Model", flat_models)
+    closest_mrt = st.selectbox("Closest MRT Station", mrt_stations)
 
     floor_area_sqm = st.number_input("Floor Area (sqm)", min_value=30.0, max_value=200.0, value=80.0, step=1.0)
     floor_input = st.number_input("Storey", min_value=1, max_value=51, value=5, step=1)
